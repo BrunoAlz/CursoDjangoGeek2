@@ -1,3 +1,13 @@
 {% extends 'base_index.html' %}
 {% load static %}
 
+{% block content %}
+  {% include 'parciais/_hero.html' %}
+  {% include 'parciais/_sobre.html' %}
+  {% include 'parciais/_porquenos.html' %}
+  {% include 'parciais/_servicos.html' %}
+  {% include 'parciais/_produtos.html' %}
+  {% include 'parciais/_avaliacoes.html' %}
+  {% include 'parciais/_galeria.html' %}
+  {% include 'parciais/_contato.html' %}
+{% endblock content %}
