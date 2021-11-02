@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'core',
 
 ]
 
@@ -70,7 +71,7 @@ WSGI_APPLICATION = 'configurations.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fusion',
+        'NAME': 'geektwo',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
