@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    {% include 'parciais/_head.html' %}
+<body>
+    {% include 'parciais/_nav.html' %}
+    {% include 'parciais/_hero.html' %}
+        {% block content %}
+
+            <main id="main">
+
+                {% include 'parciais/_sobre.html' %}
+                {% include 'parciais/_porquenos.html' %}
+                {% include 'parciais/_servicos.html' %}
+                {% include 'parciais/_produtos.html' %}
+                {% include 'parciais/_avaliacoes.html' %}
+                {% include 'parciais/_galeria.html' %}
+                {% include 'parciais/_contato.html' %}
+
+            </main>
+        {% endblock content %}
+
+{% include 'parciais/_footer.html' %}
+</body>
+</html>
