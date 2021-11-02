@@ -1,7 +1,17 @@
 from django.db import models
-from django.db.models.deletion import DO_NOTHING
 from stdimage.models import StdImageField
+# import uuid
 
+
+# def get_file_path(_instance, filename):
+#     ext = filename.split('.')[-1]
+#     filename = f'{uuid.uuid4()}.{ext}'
+#     return filename
+
+"""
+Função para Criptografar o caminho das imagens...
+trocar o upload_to='serviços/imagens por get_file_path'
+"""
 
 class Base(models.Model):
     """ A classe BASE é uma class abstrata e não é criada no banco de addos
@@ -20,7 +30,7 @@ class Base(models.Model):
 
 
 class Categoria(Base):
-    NomeCategoria = models.CharField(max_length=50)
+    NomeCategoria = models.CharField(max_length=50, verbose_name='Nome da Categoria')
 
     class Meta:
         verbose_name = ("Categoria")
@@ -30,7 +40,7 @@ class Categoria(Base):
         return self.NomeCategoria
 
 
-class Servico(models.Model):
+class Servico(Base):
     NomeServico = models.CharField(
         max_length=35, verbose_name='Nome do Serviço')
     DescricaoServico = models.CharField(
@@ -41,8 +51,10 @@ class Servico(models.Model):
         'Image', upload_to='servicos/images', variations={'thumb': {'width': 400, 'height': 400, 'crop': True}})
     SlugServico = models.SlugField(
         max_length=150, blank=True, editable=False, verbose_name='Slug')
-    Instagram = models.CharField(max_length=255, null=True, blank=True, verbose_name='Instagram')
-    Facebook = models.CharField(max_length=255, null=True, blank=True, verbose_name='Facebook')
+    Instagram = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Instagram')
+    Facebook = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Facebook')
 
     class Meta:
         verbose_name = ("Serviço")
