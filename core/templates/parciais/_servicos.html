@@ -12,33 +12,32 @@
         <div class="col-lg-12 d-flex justify-content-center">
             <ul id="menu-flters">
             <li data-filter="*" class="filter-active">Todos</li>
-            <li data-filter=".filter-starters">Pias</li>
-            <li data-filter=".filter-salads">Balcões</li>
-            <li data-filter=".filter-specialty">Lavatórios</li>
+            {% for categoria in categorias %}
+                <li data-filter=".filter-{{categoria.NomeCategoria}}">{{categoria.NomeCategoria}}</li>
+            {% endfor %}
             </ul>
         </div>
         </div>
 
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-lg-4 menu-item filter-starters">
-                <div class="fall-item fall-effect">
-                    <img src="{% static 'assets/img/menu/lobster-bisque.jpg' %}" class="img-fluid" alt="">
-                    <div class="mask">
-                        <h3>Pia Verde Ubatuba</h3>
-                        <p>Pia feita em granito verde Ubatuba, acabamento em 45° Graus,
-                        Cuba numero 2° de Inox, com frontão de 10 Centimentro sddasdasd
-                        asddasdasdasasdasdasdasdas dasdasdasdasdasdasddas
-                        asddasasdasddasasdasdasdd assdasdasdasdsdaadsdsadasd
-                        ddasdasdasdasddasdassdasdasdas.</p>
-                        <a href="#" class="btn btn-warning">Ver Mais</a>
-                        <div class="social-links mt-3">
-                            <a href="#" class="facebook"><i class="bx bxl-facebook h1 text-primary"></i></a>
-                            <a href="#" class="instagram"><i class="bx bxl-instagram h1 text-danger"></i></a>
-                        </div>
-                    </div>            
+            {% for servico in servicos %}
+                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 menu-item filter-{{servico.FkCategoria}}">
+                    <div class="fall-item fall-effect">
+                        <img src=" {{servico.ImageServico.thumb.url}} " class="img-fluid" alt="">
+                        <div class="mask">
+                            <h3>{{servico.NomeServico}}</h3>
+                            <p>{{servico.DescricaoServico}}</p>
+                            <a href="#" class="book-a-table-btn scrollto text-dark">Detalhes</a>
+                            <div class="social-links mt-3">
+                                <a href="{{servico.Facebook}}"  target="_blank" class="facebook"><i class="bx bxl-facebook h1 text-primary"></i></a>
+                                <a href="{{servico.Instagram}}"  target="_blank" class="instagram"><i class="bx bxl-instagram h1 text-danger"></i></a>
+                            </div>
+                        </div>            
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
 
     </div>
-</section><!-- End Menu Section -->
+</section>
+<!-- End Menu Section -->
